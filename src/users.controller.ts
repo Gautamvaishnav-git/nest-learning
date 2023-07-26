@@ -1,11 +1,13 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 import { Subject } from 'rxjs';
+import { UserStore } from './store/users.store';
 
 @Controller('/users')
 export class UsersController {
-  constructor(@Inject('DYNAMIC') private store: Subject<unknown>) {
-    const getDBInstance = async () => await this.store;
-    getDBInstance();
+  constructor(private users: UserStore) {
+    const usersInstance = async () => this.users;
+    console.log("users init")
+    console.log("🟢 ~ file: users.controller.ts:9 ~ UsersController ~ constructor ~ usersInstance:", usersInstance())
   }
   @Get('/')
   getProfile() {

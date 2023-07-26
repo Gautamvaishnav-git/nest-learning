@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Scope } from '@nestjs/common';
 
 interface IUser {
   id: number;
@@ -6,7 +6,9 @@ interface IUser {
   age: number;
 }
 
-@Injectable()
+@Injectable({
+  scope: Scope.REQUEST,
+})
 export class UserStore {
   private store = new Map<number, IUser>();
   constructor() {
