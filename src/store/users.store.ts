@@ -6,9 +6,7 @@ interface IUser {
   age: number;
 }
 
-@Injectable({
-  scope: Scope.REQUEST,
-})
+@Injectable()
 export class UserStore {
   private store = new Map<number, IUser>();
   constructor() {
