@@ -1,6 +1,5 @@
-import { Controller, Get, Inject } from '@nestjs/common';
-import { Subject } from 'rxjs';
-import { UserStore } from './store/users.store';
+import { Controller, Get } from '@nestjs/common';
+import { IUser, UserStore } from './store/users.store';
 
 @Controller('/users')
 export class UsersController {
@@ -9,7 +8,14 @@ export class UsersController {
     console.log('users init');
   }
   @Get('/')
-  getProfile() {
-    return 'success';
+  getProfile(): IUser {
+    this.users.addUser({ age: 13, id: 2, name: 'gautam vaishnav' });
+    const user = this.users.getUser(2);
+    return user;
+  }
+
+  @Get('/list')
+  getUsers(): IUser[] {
+    return this.users.getUsers();
   }
 }

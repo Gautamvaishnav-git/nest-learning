@@ -1,14 +1,12 @@
 import { Injectable, Scope } from '@nestjs/common';
 
-interface IUser {
+export interface IUser {
   id: number;
   name: string;
   age: number;
 }
 
-@Injectable({
-  scope: Scope.TRANSIENT,
-})
+@Injectable({})
 export class UserStore {
   private store = new Map<number, IUser>();
   constructor() {
@@ -25,7 +23,8 @@ export class UserStore {
   }
 
   getUsers() {
-    return Array.from(this.store).map((_, user) => user);
+    const users = Array.from(this.store).map(([, user]) => user);
+    return users;
   }
 
   updateUser(user: IUser) {
