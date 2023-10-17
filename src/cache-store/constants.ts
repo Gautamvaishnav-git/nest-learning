@@ -1,1 +1,0 @@
-export const STORE_OPTIONS = 'STORE_OPTIONS';
