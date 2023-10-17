@@ -7,7 +7,7 @@ interface IUser {
 }
 
 @Injectable()
-export class store {
+export class Store {
   private store = new Map<number, IUser>();
   constructor() {
     console.log('store init');

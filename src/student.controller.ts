@@ -1,10 +1,10 @@
-import { UserStore } from './store/users.store';
-import { Controller } from '@nestjs/common';
+// import { UserStore } from './store/users.store';
+// import { Controller, Inject } from '@nestjs/common';
 
-@Controller()
-export class Student {
-  constructor(private users: UserStore) {
-    console.log(users);
-    console.log('students init!');
-  }
-}
+// @Controller()
+// export class Student {
+//   constructor(@Inject('STORE') private users: UserStore) {
+//     console.log(users);
+//     console.log('students init!');
+//   }
+// }
